@@ -2,7 +2,7 @@ from pydantic import BaseModel
 from typing import List, Optional
 
 class HoneypotRequest(BaseModel):
-    message: str
+    message: Optional[str] = ""
     conversation_id: Optional[str] = None
 
 class ExtractedIntelligence(BaseModel):
