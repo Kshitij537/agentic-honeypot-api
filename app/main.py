@@ -15,11 +15,19 @@ from app.errors import (
     generic_exception_handler,
 )
 
+
 app = FastAPI(
     title="Agentic Honeypot API",
     description="🐝 Catching scammers since 2026! A FastAPI that detects scams and extracts intelligence.",
     version="1.0.0"
 )
+
+@app.post("/api/honeypot/test")
+async def guvi_tester(api_key: str = Depends(verify_api_key)):
+    return {
+        "status": "success",
+        "message": "Honeypot API is reachable and authenticated successfully"
+    }
 
 # 🌍 CORS Middleware - Let the hackathon platform talk to us!
 # Without this, browsers block requests faster than we block scammers 🚫
